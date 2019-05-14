@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Div = styled.div`
   z-index: 200;
-  margin: 0 10px;
+  margin: 56px 10px;
   right: 0;
   font-size: 14px;
   position: absolute;

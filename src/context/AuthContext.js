@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
+import axios from '../axios';
 
 export const AuthContext = React.createContext();
 
@@ -28,6 +29,7 @@ export class AuthContextProvider extends Component {
           loaded: true
         });
         this.setCurrentUser();
+        window.location.assign("/");
       })
       .catch(error => {
         if (!error.response) {

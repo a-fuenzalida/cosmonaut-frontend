@@ -9,7 +9,10 @@ import IngresarForm from '../components/Ingresar/IngresarForm';
 
 const Div = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
   height: 100%;
   background-image: url(${Background});

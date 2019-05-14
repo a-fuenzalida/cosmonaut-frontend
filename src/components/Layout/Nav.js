@@ -14,6 +14,7 @@ const StyledNav = styled.nav`
   position: absolute;
   width: 100%;
   filter: inherit;
+  border-bottom: 2px solid #FF746A;
 
   @media (max-width: 700px) {
     position: fixed;
@@ -110,7 +111,7 @@ class Nav extends Component {
     else {
       menuButtons = (
         <>
-          <Link to="/ingresar"><button>Iniciar sesión</button></Link>
+          <Link to="/ingresar"><button>Ingresar</button></Link>
         </>
       );
     }
