@@ -3,6 +3,7 @@ import axios from '../axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import Card from '../components/UI/Card';
 import Post from '../components/Post/Post';
 
 const Div = styled.div`
@@ -10,31 +11,9 @@ const Div = styled.div`
   margin: auto;
 `;
 
-const Card = styled.div`
-  text-align: center;
-  font-family: 'Quicksand';
-  font-size: 15px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 500px;
-
-  @media (max-width: 600px) {
-    width: 80%;
-  }
-
-  & button {
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-    color: red;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 0;
-    margin: 0;
-  }
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #FF746A;
 `;
 
 class Inicio extends Component {
@@ -62,7 +41,7 @@ class Inicio extends Component {
       <Div>
         <Card>
           Estás viendo las últimas 10 publicaciones.<br/>
-          Para ver más <Link to="/ingresar"><button>ingresa aquí.</button></Link>
+          Para ver más <StyledLink to="/ingresar">ingresa aquí.</StyledLink>
         </Card>
         {
           this.state.posts.map(post => (

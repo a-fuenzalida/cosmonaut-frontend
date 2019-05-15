@@ -68,7 +68,6 @@ export class AuthContextProvider extends Component {
           });
         })
         .catch(error => {
-          console.log("User a null");
           localStorage.removeItem('access-token');
           localStorage.removeItem('client');
           localStorage.removeItem('uid');

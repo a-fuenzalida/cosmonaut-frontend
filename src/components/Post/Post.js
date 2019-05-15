@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Card = styled.div`
   background-color: #FFFFFF;
@@ -16,7 +17,7 @@ const Card = styled.div`
   }
 
   & header {
-    height: 50px;
+    height: 80px;
     padding: 15px;
   }
 `;
@@ -65,6 +66,15 @@ const DateTime = styled.footer`
   padding: 10px;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+
+  & span {
+    color: #FF746A;
+  }
+`;
+
 const Post = (props) => {
   const createdAt = new Date(props.post.created_at);
   const date = `${createdAt.getDate()}/${createdAt.getMonth()+1}/${createdAt.getFullYear()} ${createdAt.getHours()}:${createdAt.getMinutes() < 10 ? "0" + createdAt.getMinutes() : createdAt.getMinutes()}`
@@ -73,9 +83,11 @@ const Post = (props) => {
   return (
     <Card>
       <header>
+        <StyledLink to={"/" + props.post.nickname}>
         <UserImg src={process.env.REACT_APP_API_URL + "images/user/" + props.post.picture}/>
         <strong>{props.post.name}</strong><br />
-        @{props.post.nickname}
+        <span>@{props.post.nickname}</span>
+        </StyledLink>
       </header>
       <div>
         <Img src={process.env.REACT_APP_API_URL + props.post.image.url}/>

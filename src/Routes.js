@@ -40,7 +40,7 @@ class Routes extends Component {
                 <Registrar/>
               )
             )}/>
-            <Route path="/:nickname" component={Perfil} />
+            <Route exact path="/:nickname" component={Perfil} />
             {/* 
             <Route path="/subir" component={Subir} />
             <Route path="/buscar" component={Buscar} />*/}

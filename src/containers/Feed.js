@@ -45,7 +45,6 @@ class Feed extends Component {
   componentDidMount() {
     axios.get('api/v1/feed')
       .then(response => {
-        console.log(response.data);
         this.setState({
           posts: response.data
         })

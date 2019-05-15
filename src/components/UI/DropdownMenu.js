@@ -7,7 +7,6 @@ const Div = styled.div`
   right: 0;
   font-size: 14px;
   position: absolute;
-  padding: 10px;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.2em;

@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   text-decoration: none;
   display: inline-block;
   touch-action: manipulation;
-  background-color: #5C5A61;
+  background-color: #FF746A;
   color: #FFF;
   border: 1px solid transparent;
   border-radius: .25rem;
@@ -17,8 +17,8 @@ const StyledButton = styled.button`
   &:hover,
   &:focus,
   &:active {
-    background-color: #5C5A61;
-    box-shadow: 0px 0px 7px #5C5A61;
+    background-color: #FF746A;
+    box-shadow: 0px 0px 7px #FF746A;
   }
 `;
 

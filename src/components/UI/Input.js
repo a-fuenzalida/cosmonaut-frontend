@@ -13,6 +13,7 @@ const Div = styled.div`
 
 const StyledInput = styled.input`
   background-color: transparent;
+  color: #FF746A;
   text-align: center;
   font-family: 'Open Sans';
   font-size: 16px;
@@ -22,8 +23,7 @@ const StyledInput = styled.input`
   padding: 0.5em 0;
   border: none;
   border-bottom: 1px solid rgba(92, 90, 97, 0.5);
-  transition: 
-    box-shadow .15s ease-in-out;
+  transition: box-shadow .15s ease-in-out;
 
   & ~ label {
     width: 100%;
