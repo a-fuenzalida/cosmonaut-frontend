@@ -12,10 +12,9 @@ export class AuthContextProvider extends Component {
   }
 
   componentDidMount() {
-    this.setCurrentUser();
-    this.setState({
-      loaded: false
-    });
+    if (!this.state.user || localStorage.getItem('uid')) {
+      this.setCurrentUser();
+    }
   }
 
   handleLogin = (nickname, password) => {

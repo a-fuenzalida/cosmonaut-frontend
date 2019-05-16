@@ -99,7 +99,7 @@ class Nav extends Component {
   render() {
     let menuButtons = null;
     
-    if (this.context.user) {
+    if (this.context.user && localStorage.getItem('uid')) {
       menuButtons = (
         <>
           <button><i className="fas fa-search"></i></button>
@@ -108,7 +108,7 @@ class Nav extends Component {
         </>
       );
     }
-    else {
+    else if (!this.context.user && !localStorage.getItem('uid')) {
       menuButtons = (
         <>
           <Link to="/ingresar"><button>Ingresar</button></Link>

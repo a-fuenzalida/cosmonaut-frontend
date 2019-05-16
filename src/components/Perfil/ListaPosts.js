@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import CardWarning from '../UI/Card';
+import Spinner from '../UI/Spinner';
 
 const Lista = styled.div`
   width: 100%;
@@ -48,7 +49,7 @@ const Img = styled.img`
 `;
 
 const ListaPosts = (props) => {
-  let posts = <p>Cargando</p>;
+  let posts = <Spinner />;
 
   if (props.posts.length <= 0 && props.loaded) {
     posts = (

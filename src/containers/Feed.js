@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../axios';
 import styled from 'styled-components';
 
+import ProgressBar from '../components/UI/ProgressBar';
 import Post from '../components/Post/Post';
 
 const Div = styled.div`
@@ -39,37 +40,65 @@ const Card = styled.div`
 class Feed extends Component {
   state = {
     posts: [],
-    error: false
+    error: false,
+    loaded: false
   }
 
   componentDidMount() {
     axios.get('api/v1/feed')
       .then(response => {
         this.setState({
-          posts: response.data
+          posts: response.data,
+          error: false,
+          loaded: true
         })
       })
       .catch(error => {
         this.setState({
-          error: true
+          error: true,
+          loaded: true
         });
       });
   }
 
+  componentWillUnmount() {
+    this.setState({
+      loaded: false,
+      error: false
+    });
+  }
+
   render() {
-    return (
-      <Div>
-        {this.state.error ?
+    let posts = <ProgressBar />;
+    
+    if (this.state.posts.length > 0) {
+      posts = (
+        this.state.posts.map(post => (
+          <Post key={post.id} post={post}/>
+        ))
+      );
+    }
+    else if (this.state.posts.length <= 0 && this.state.loaded && !this.state.error) {
+      posts = (
         <Card>
           No hay ninguna publicación para mostrar.
         </Card>
-        : null}
-        {
-          this.state.posts.map(post => (
-            <Post key={post.id} post={post}/>
-          ))
-        }
-      </Div>
+      );
+    }
+    else if (this.state.error) {
+      posts = (
+        <Card>
+          Hubo un problema al cargar las publicaciones.
+        </Card>
+      );
+    }
+
+    return (
+      <>
+        <Div>
+          {posts}
+        </Div>
+      </>
     )
   }
 }

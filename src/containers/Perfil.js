@@ -5,12 +5,16 @@ import axios from '../axios';
 import Card from '../components/UI/Card';
 import Information from '../components/Perfil/Information';
 import ListaPosts from '../components/Perfil/ListaPosts';
+import ProgressBar from '../components/UI/ProgressBar';
 
 const Div = styled.div`
-  margin: 0 auto 30px;
   padding-top: 56px;
-  max-width: 900px;
+`;
+
+const Container = styled.div`
   width: 100%;
+  margin: 0 auto 30px;
+  max-width: 900px;
 `;
 
 class Perfil extends Component {
@@ -94,14 +98,14 @@ class Perfil extends Component {
   }
 
   render() {
-    let profile = <p>Cargando...</p>;
+    let profile = <ProgressBar />;
 
     if (this.state.user) {
       profile = (
-        <>
+        <Container>
           <Information user={this.state.user} />
           <ListaPosts posts={this.state.posts} loaded={this.state.loadedPosts} />
-        </>
+        </Container>
       );
     }
 
