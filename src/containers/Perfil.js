@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from '../axios';
 
+import { AuthContext } from '../context/AuthContext';
+
 import Card from '../components/UI/Card';
 import Information from '../components/Perfil/Information';
 import ListaPosts from '../components/Perfil/ListaPosts';
@@ -18,8 +20,12 @@ const Container = styled.div`
 `;
 
 class Perfil extends Component {
+  static contextType = AuthContext;
+
   state = {
     user: null,
+    followers: [],
+    followings: [],
     posts: [],
     loadedUser: false,
     loadedPosts: false,
@@ -49,6 +55,8 @@ class Perfil extends Component {
         loadedUser: true
       });
       this.loadPosts(response.data.id);
+      this.loadFollowings(response.data.id);
+      this.loadFollowers(response.data.id);
     })
     .catch(error => {
       if (!error.response) {
@@ -94,6 +102,26 @@ class Perfil extends Component {
             loadedPosts: true
           })
         }
+      });
+  }
+
+  loadFollowings = (id) => {
+    axios.get(`api/v1/users/${id}/followings`)
+      .then(response => {
+        console.log(response.data);
+        this.setState({
+          followings: response.data
+        });
+      });
+  }
+
+  loadFollowers = (id) => {
+    axios.get(`api/v1/users/${id}/followers`)
+      .then(response => {
+        console.log(response.data);
+        this.setState({
+          followers: response.data
+        });
       });
   }
 

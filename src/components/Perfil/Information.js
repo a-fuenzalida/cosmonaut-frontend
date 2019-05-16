@@ -4,6 +4,10 @@ import styled from 'styled-components';
 const Header = styled.header`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: flex-end;
+  justify-content: center;
   padding: 30px 5%;
   background-color: #FFFFFF;
   border-bottom: 1px solid #CFC8C4;
@@ -70,6 +74,27 @@ const Button = styled.button`
 const Description = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 3 0 0;
+`;
+
+const FollowInfo = styled.div`
+  display: flex;
+  flex: 1 0 0;
+  width: 100%;
+
+  @media (max-width: 700px) {
+    margin: 20px 20px 0;
+    display: block;
+    width: 100%;
+    flex: none;
+  }
+
+  & div {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+  }
 `;
 
 const Information = (props) => {
@@ -86,7 +111,11 @@ const Information = (props) => {
           {props.user.description}
         </p>
       </Description>
-      
+      <FollowInfo>
+        <div>
+          Hola
+        </div>
+      </FollowInfo>
     </Header>
   )
 }
