@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: 'https://cosmonautapi.herokuapp.com/',
 });
 
 instance.defaults.headers.common['access-token'] = localStorage.getItem('access-token') || "";
